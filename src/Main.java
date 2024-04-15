@@ -10,7 +10,7 @@ public class Main {
         String password;
         boolean isValidUser;
         boolean isValidPassword;
-        String isLoginIn;
+        boolean isLoginIn;
 
         // ENTER USERNAME
         do{
@@ -47,7 +47,9 @@ public class Main {
 //
 //        }while(!isValidPassword);
 //
-        loginUser("Kyl_1","Luthando@123",username,password);
+        isLoginIn =  loginUser("Kyl_1","Luthando@123",username,password);
+
+        returnLoginStatus(isLoginIn,firstName,lastName);
 
 
 
@@ -126,7 +128,7 @@ public class Main {
 
     public static String returnLoginStatus(boolean isLoggedIn,String firstName,String lastName){
 
-
+//        System.out.println(isLoggedIn ? "Welcome " + firstName + " " + lastName + " it is great to see you again" : "Username or password incorrect, please try again");
         return isLoggedIn ? "Welcome " + firstName + " " + lastName + " it is great to see you again" : "Username or password incorrect, please try again";
     };
 
