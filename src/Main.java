@@ -9,6 +9,8 @@ public class Main {
         String lastName = "Didiza";
         String password;
         boolean isValidUser;
+        boolean isValidPassword;
+        String isLoginIn;
 
         // ENTER USERNAME
         do{
@@ -20,11 +22,33 @@ public class Main {
 
         }while(!isValidUser);
 
+        // ENTER PASSWORD
+        do{
+            password = JOptionPane.showInputDialog("Enter Password");
+            isValidPassword = checkPasswordComplexity(password);
+            if(!isValidPassword){
+                String message = "Password is not correctly formatted, please ensure that your password contains  at least 8 " +
+                        " characters, a capital letter, a number and a special character";
+                JOptionPane.showMessageDialog(null,message);
+            }
 
+        }while(!isValidPassword);
 
-        password = JOptionPane.showInputDialog("Enter Your Password");
-        checkPasswordComplexity(password);
         registerUser(username,password);
+
+//        do{
+//            password = JOptionPane.showInputDialog("Enter Password");
+//            isValidPassword = checkPasswordComplexity(password);
+//            if(!isValidPassword){
+//                String message = "Password is not correctly formatted, please ensure that your password contains  at least 8 " +
+//                        " characters, a capital letter, a number and a special character";
+//                JOptionPane.showMessageDialog(null,message);
+//            }
+//
+//        }while(!isValidPassword);
+//
+        loginUser("Kyl_1","Luthando@123",username,password);
+
 
 
     }
@@ -42,6 +66,7 @@ public class Main {
 
     public static boolean checkPasswordComplexity(String password) {
         boolean isValidPAssword = false;
+
 
 //        String passwordValid = "Password is not correctly formatted, please ensure that your password contains  at least 8 " +
 //                " characters, a capital letter, a number and a special character";
@@ -91,6 +116,18 @@ public class Main {
         return "jaj";
     };
 
+    public static boolean loginUser(String username,String password,String storedUser,String storedPass){
+        boolean login = username.equals(storedUser) && password.equals(storedPass) ? true : false;
 
+        System.out.println(login);
+
+        return login;
+    };
+
+    public static String returnLoginStatus(boolean isLoggedIn,String firstName,String lastName){
+
+
+        return isLoggedIn ? "Welcome " + firstName + " " + lastName + " it is great to see you again" : "Username or password incorrect, please try again";
+    };
 
 }
